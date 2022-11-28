@@ -1,0 +1,208 @@
+﻿<UserControl x:Class="CatalogoSeries.Views.ListaView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CatalogoSeries.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="570" d:DesignWidth="900" >
+
+
+
+
+    <UserControl.Resources>
+
+
+        <local:ScrollLimitConverter x:Key="scrollLimitConverter"></local:ScrollLimitConverter>
+
+
+        <ImageBrush x:Key="UpArrow_Default"
+                    ImageSource="C:\Users\danie\Documents\CatalogoSeries\CatalogoSeries\Assets\chevron-arrow-up _Default.png"></ImageBrush>
+
+        <ImageBrush x:Key="DownArrow_Default"
+                    ImageSource="C:\Users\danie\Documents\CatalogoSeries\CatalogoSeries\Assets\chevron-arrow-down_Default.png">
+           
+        </ImageBrush>
+
+
+
+        <Style TargetType="ScrollBar">
+            <Setter Property="SnapsToDevicePixels" Value="True"></Setter>
+            <Setter Property="OverridesDefaultStyle" Value="True"></Setter>
+
+
+            <Style.Triggers>
+                <Trigger Property="Orientation"
+                         Value="Vertical">
+
+                    <Setter Property="Width"
+                            Value="80"></Setter>
+                    <Setter Property="Height"
+                            Value="490"></Setter>
+                    <Setter Property="Margin"
+                            Value="20"></Setter>
+                    <Setter Property="Template"
+                            Value="{DynamicResource VerticalScrollBar}"></Setter>
+
+                </Trigger>
+            </Style.Triggers>
+            
+        </Style>
+
+        <ControlTemplate x:Key="VerticalScrollBar"
+                         TargetType="{x:Type ScrollBar}">
+
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="80"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Border
+                    Grid.Row="1"
+                    CornerRadius="20"
+                    Margin="10"
+                    Background="#FFD700">
+                    
+                </Border>
+
+
+                <RepeatButton x:Name="rb_Up"
+                          Focusable="False"
+                          Height="80"
+                          Command="ScrollBar.LineUpCommand"
+                          Background="{StaticResource UpArrow_Default}"
+                          Style="{StaticResource ScrollBar_UpArrow}">
+                    
+                </RepeatButton>
+
+                <RepeatButton x:Name="rb_Down"
+                          Grid.Row="2"
+                          Focusable="False"
+                          Height="80"
+                          Command="ScrollBar.LineDownCommand"
+                           Background="{StaticResource DownArrow_Default}"
+                              Style="{StaticResource ScrollBar_DownArrow}">
+
+                </RepeatButton>
+
+                <Track
+                    Name="PART_Track"
+                    Grid.Row="1"
+                    IsDirectionReversed="True">
+
+                    <Track.DecreaseRepeatButton>
+                        <RepeatButton
+                            Margin="3,2,3,2"
+                            Command="ScrollBar.PageUpCommand"
+                            Style="{StaticResource ScrollBar_Track}">
+                            
+                        </RepeatButton>
+                    </Track.DecreaseRepeatButton>
+
+                    <Track.Thumb>
+                        <Thumb Style="{StaticResource ScrollBar_Thumb}">
+                            
+                        </Thumb>
+                    </Track.Thumb>
+
+                    <Track.IncreaseRepeatButton>
+                        <RepeatButton
+                            Margin="3,2,3,2"
+                            Command="ScrollBar.PageDownCommand"
+                            Style="{StaticResource ScrollBar_Track}">
+                            
+                        </RepeatButton>
+                    </Track.IncreaseRepeatButton>
+                    
+                </Track>
+                
+
+            </Grid>
+
+            <ControlTemplate.Triggers>
+                <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=ScrollViewer},Path=VerticalOffset}" Value="0">
+                    <Setter TargetName="rb_Up" Property="IsEnabled" Value="False"></Setter>
+                </DataTrigger>
+                <DataTrigger Value="True">
+                    <DataTrigger.Binding>
+                        <MultiBinding Converter="{StaticResource scrollLimitConverter}">
+                            <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=ScrollViewer}" Path="VerticalOffset"></Binding>
+                            <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=ScrollViewer}" Path="ScrollableHeight"></Binding>
+                        </MultiBinding>
+                    </DataTrigger.Binding>
+                    <Setter TargetName="rb_Down" Property="IsEnabled" Value="False"></Setter>
+                </DataTrigger>
+            </ControlTemplate.Triggers>
+            
+        </ControlTemplate>
+        
+    </UserControl.Resources>
+
+
+    <DockPanel Grid.Column="1">
+
+
+
+        <WrapPanel>
+            
+            <TextBox DockPanel.Dock="Top"></TextBox>
+        </WrapPanel>
+
+        <Border DockPanel.Dock="Bottom" x:Name="principal" BorderThickness="0" Background="#115173" Height="550" CornerRadius="30" Margin="0,0,0,0">
+
+        <Border.RenderTransform>
+            <TranslateTransform Y="0"></TranslateTransform>
+        </Border.RenderTransform>
+        
+        <ListBox HorizontalContentAlignment="Center" SelectedItem="{Binding serie}" ItemsSource="{Binding ListaSeries}" Background="Transparent" Height="545" Width="850" BorderThickness="0">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Columns="2"></UniformGrid>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+
+                    <StackPanel HorizontalAlignment="Center">
+                        <Border VerticalAlignment="Center" HorizontalAlignment="Center" Background="#053F5E" Margin="0,5,0,0" CornerRadius="10" Height="400" Width="280">
+
+                            <StackPanel>
+                                <StackPanel.Resources>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Foreground" Value="White"></Setter>
+                                        <Setter Property="FontWeight" Value="DemiBold"></Setter>
+                                        <Setter Property="FontSize" Value="15"></Setter>
+                                        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                                    </Style>
+                                </StackPanel.Resources>
+                                <Image Margin="0,15,0,0" Source="{Binding Imagen}" Height="310" Width="210" Stretch="UniformToFill"></Image>
+                                <WrapPanel HorizontalAlignment="Center">
+                                    <Image Source="\Assets\folded-ribbon.png" Height="20" Width="20" Margin="0,13,5,0"></Image>
+                                    <TextBlock Text="{Binding Nombre}" Margin="0,10,0,0"></TextBlock>
+                                </WrapPanel>
+                                <WrapPanel HorizontalAlignment="Center" Margin="0,5,0,0">
+                                    <Image Source="\Assets\viendo-tv.png" Height="25" Width="25" Margin="0,0,5,0"></Image>
+                                    <TextBlock Text="Episodios: ">
+                                        <Run Text="{Binding Episodios}"></Run>
+                                </TextBlock>
+                                </WrapPanel>
+                            </StackPanel>
+
+
+                        </Border>
+                    </StackPanel>
+
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+
+        </ListBox>
+
+    </Border>
+    </DockPanel>
+
+
+</UserControl>

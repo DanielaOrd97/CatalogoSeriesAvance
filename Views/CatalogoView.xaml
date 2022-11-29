@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:CatalogoSeries.Views"
         xmlns:vm="clr-namespace:CatalogoSeries.ViewModels"
         mc:Ignorable="d"
-        Title="CatalogoView" WindowStartupLocation="CenterScreen" HorizontalAlignment="Center"  AllowsTransparency="True" Height="650" Width="1180" Background="#022C43" WindowStyle="None">
+        Title="CatalogoView" MouseDown="Window_MouseDown" WindowStartupLocation="CenterScreen" HorizontalAlignment="Center"  AllowsTransparency="True" Height="650" Width="1180" Background="#022C43" WindowStyle="None">
 
     <Window.DataContext>
         <vm:SeriesViewModel></vm:SeriesViewModel>
@@ -20,10 +20,11 @@
         <local:AgregarView x:Name="agregar" x:Key="agregar"></local:AgregarView>
         <local:VerDetalles x:Name="ver" x:Key="ver"></local:VerDetalles>
     </Window.Resources>-->
-    
-    
 
-    <Grid>
+
+
+
+        <Grid>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width=".1*"></ColumnDefinition>

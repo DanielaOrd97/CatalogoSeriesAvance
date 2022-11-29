@@ -40,44 +40,46 @@
                     <WrapPanel Margin="20,5,0,0" >
                         <Image VerticalAlignment="Center" Margin="10,10,0,0" Source="\Assets\right-arrow (2).png" Height="35"></Image>
                         <TextBlock Foreground="White" Margin="10,10,0,0" FontWeight="Bold">Título:</TextBlock>
-                        <TextBox Text="{Binding serie.Nombre}" Width="365" Height="25" Margin="5,2,0,0"></TextBox>
+                        <TextBox Text="{Binding serie.Nombre}" Width="365" Height="25" Margin="5,2,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                                 FontSize="15" FontWeight="DemiBold"></TextBox>
                     </WrapPanel>
 
                     <WrapPanel Margin="20,5,0,0" >
                         <Image VerticalAlignment="Center" Margin="10,10,0,0" Source="\Assets\teatro.png" Height="40"></Image>
                         <TextBlock Foreground="White" Margin="0,10,0,0" FontWeight="Bold" VerticalAlignment="Center">Género:</TextBlock>
-                        <TextBox Text="{Binding serie.Genero}" Width="355" Height="25" Margin="5,10,0,0"></TextBox>
+                        <TextBox Text="{Binding serie.Genero}" Width="355" Height="25" Margin="5,10,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                                 FontSize="15" FontWeight="DemiBold"></TextBox>
                     </WrapPanel>
 
                     <WrapPanel Margin="0,5,0,0" HorizontalAlignment="Center">
                         <Image VerticalAlignment="Center" Margin="10,10,0,0" Source="\Assets\pelicula.png" Height="30"></Image>
                         <TextBlock Foreground="White" Margin="0,10,0,0" FontWeight="Bold">Episodios:</TextBlock>
-                        <TextBox Text="{Binding serie.Episodios}" Width="100" Height="25" Margin="5,10,0,0" TextAlignment="Center" VerticalContentAlignment="Center"></TextBox>
+                        <TextBox Text="{Binding serie.Episodios}" Width="100" Height="25" Margin="5,10,0,0" TextAlignment="Center" FontWeight="DemiBold" VerticalContentAlignment="Center"></TextBox>
                     </WrapPanel>
 
                     <WrapPanel Margin="20,10,0,0" >
                         <Image VerticalAlignment="Center" Margin="10,0,0,60" Source="\Assets\writing.png" Height="35"></Image>
                         <TextBlock Foreground="White" Margin="5,13,0,0" FontWeight="Bold">Sinopsis:</TextBlock>
-                        <TextBox Text="{Binding serie.Descripcion}"  Width="345" TextWrapping="Wrap" Height="100" Margin="5,10,0,0"></TextBox>
+                        <TextBox Text="{Binding serie.Descripcion}" FontWeight="DemiBold"  Width="345" TextWrapping="WrapWithOverflow" Height="100" Margin="5,10,0,0"></TextBox>
                     </WrapPanel>
 
 
                     <WrapPanel Margin="20,13,0,0">
                         <Image VerticalAlignment="Center" Margin="10,10,0,0" Source="\Assets\calendar.png" Height="30" Width="20"></Image>
                         <TextBlock Foreground="White" Margin="5,10,0,0" FontWeight="Bold" FontSize="20">Inicio de emisión:</TextBlock>
-                        <DatePicker SelectedDate="{Binding serie.InicioDeEmision}" Background="White" Height="30" Width="280" Margin="3,8,0,0"></DatePicker>
+                        <DatePicker HorizontalContentAlignment="Center" FontWeight="DemiBold" FontSize="15" SelectedDate="{Binding serie.InicioDeEmision}" Background="White" Height="30" Width="280" Margin="3,8,0,0"></DatePicker>
                     </WrapPanel>
 
                     <WrapPanel Margin="20,13,0,0">
                         <Image VerticalAlignment="Center" Margin="10,10,0,0" Source="\Assets\calendar.png" Height="30" Width="20"></Image>
                         <TextBlock Foreground="White" FontSize="20" Margin="5,10,0,0" FontWeight="Bold">Fin de emisión:</TextBlock>
-                        <DatePicker SelectedDate="{Binding serie.FinDeEmision}" Margin="3,8,0,0" Background="White" Height="30" Width="303"></DatePicker>
+                        <DatePicker HorizontalContentAlignment="Center" FontWeight="DemiBold" FontSize="15" SelectedDate="{Binding serie.FinDeEmision}" Margin="3,8,0,0" Background="White" Height="30" Width="303"></DatePicker>
                     </WrapPanel>
 
                     <WrapPanel Margin="20,13,0,0">
                         <Image VerticalAlignment="Center" Margin="10,10,0,0"  Source="\Assets\gallery.png" Height="30" Width="30"></Image>
                         <TextBlock Foreground="White" Margin="0,10,0,0" FontWeight="Bold" FontSize="20">URL de Portada:</TextBlock>
-                        <TextBox Text="{Binding serie.Imagen}" Width="288" Height="25" Margin="3,7,0,0"></TextBox>
+                        <TextBox Text="{Binding serie.Imagen}" Width="288" Height="25" Margin="3,7,0,0" FontWeight="DemiBold" VerticalContentAlignment="Center"></TextBox>
                     </WrapPanel>
 
                     <WrapPanel Margin="45,40,0,0" HorizontalAlignment="Center">

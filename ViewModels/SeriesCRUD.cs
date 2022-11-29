@@ -17,6 +17,19 @@ namespace CatalogoSeries.ViewModels
             return contenedor.Series.OrderBy(x => x.Nombre);
         }
 
+
+        public IEnumerable<Series> GetSeriesXGenero(string palabra)
+        {
+            return contenedor.Series.Where(x => x.Genero.Contains(palabra.ToUpper()));
+        }
+
+        public IEnumerable<Series> GetSeriesXNumEpisodios(int numero)
+        {
+
+            return contenedor.Series.Where(x => x.Episodios == numero);
+            
+        }
+
         public void Create(Series s)
         {
             contenedor.Series.Add(s);
@@ -77,6 +90,8 @@ namespace CatalogoSeries.ViewModels
                 return null;
             }
         }
+
+
 
         public void Update(Series s)
         {

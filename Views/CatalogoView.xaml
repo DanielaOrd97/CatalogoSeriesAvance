@@ -70,7 +70,31 @@
             </StackPanel>
         </Border>
 
-        <Border Grid.Column="1" BorderThickness="0" Background="#115173" Height="570" CornerRadius="30" Width="900">
+
+
+        <DockPanel Grid.Column="1">
+
+
+            <WrapPanel DockPanel.Dock="Top" HorizontalAlignment="Center" Margin="200,10,0,0">
+
+                
+                <TextBox x:Name="Entrada" Width="300" Height="33" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" Margin="0,0,10,0"></TextBox>
+                <Button Command="{Binding GetSeriesXGeneroCommand}" CommandParameter="{Binding ElementName=Entrada, Path=Text}" Height="50" Width="50" Background="Transparent" BorderThickness="0">
+                    <Image Source="https://cdn-icons-png.flaticon.com/128/6539/6539033.png"></Image>                
+                </Button>
+
+
+                <TextBlock Margin="80,0,0,0" Foreground="White" FontWeight="Bold" FontSize="30" VerticalAlignment="Center">Series:
+                <TextBlock Text="{Binding TotalElementos}" Margin="0,0,0,0" VerticalAlignment="Center" Foreground="White"
+                           FontWeight="Bold" FontSize="30">
+                    
+                </TextBlock>
+                    </TextBlock>
+                
+            </WrapPanel>
+            
+
+            <Border DockPanel.Dock="Bottom" Grid.Column="1" BorderThickness="0" Background="#115173" Height="570" CornerRadius="30" Width="900" Margin="0,0,0,0">
 
 
             <ContentControl>
@@ -108,7 +132,7 @@
             </ContentControl>
 
         </Border>
-        
+        </DockPanel>
         
         
 

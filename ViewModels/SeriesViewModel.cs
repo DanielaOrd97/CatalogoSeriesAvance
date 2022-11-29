@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics.Contracts;
+using System.IO.Packaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,7 +32,14 @@ namespace CatalogoSeries.ViewModels
         public ICommand AgregarSerieCommand { get; set; }
         public ICommand EliminarSerieCommand { get; set; }
         public ICommand EditarSerieCommand { get; set; }
+        public ICommand GetSeriesXGeneroCommand { get; set; }
+        public ICommand GetSeriesXNumEpisodios { get; set; }
 
+
+        public int TotalElementos
+        {
+            get { return ListaSeries.Count(); }
+        }
 
         public SeriesViewModel()
         {
@@ -45,6 +53,34 @@ namespace CatalogoSeries.ViewModels
             VerSerieCommand = new RelayCommand(VerSerie);
             VerEliminarCommand = new RelayCommand(VerEliminar);
             VerEditarCommand = new RelayCommand(VerEditar);
+
+            GetSeriesXGeneroCommand = new RelayCommand<string>(GetSeriesPorGenero);
+            GetSeriesXNumEpisodios = new RelayCommand<int>(GetSeriesPorEpisodios);
+
+        }
+
+        private void GetSeriesPorEpisodios(int n)
+        {
+            ListaSeries.Clear();
+
+            foreach (var item in catalogo.GetSeriesXNumEpisodios(n))
+            {
+                ListaSeries.Add(item);
+            }
+
+            Actualizar();
+        }
+
+        private void GetSeriesPorGenero(string s)
+        {
+            ListaSeries.Clear();
+
+            foreach (var i in catalogo.GetSeriesXGenero(s))
+            {
+                ListaSeries.Add(i);
+            }
+
+            Actualizar();
         }
 
         private void EditarSerie()
@@ -132,6 +168,7 @@ namespace CatalogoSeries.ViewModels
 
         private void Regresar()
         {
+            ActualizarBaseDatos();
             Vista = "principal";
             Actualizar();
             //  serie = null;

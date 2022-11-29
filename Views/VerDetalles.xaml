@@ -33,26 +33,27 @@
                         <Style TargetType="Label" x:Key="Texto">
                             <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
                             <Setter Property="FontWeight" Value="DemiBold"></Setter>
+                            <Setter Property="FlowDirection" Value="LeftToRight"></Setter>
                         </Style>
                     </StackPanel.Resources>
 
                     <Image Source="\Assets\right-arrow (2).png" Height="30" Width="30"></Image>
-                    <Label Style="{StaticResource Texto}" Content="{Binding serie.Nombre}"  Background="White" Width="325" Height="30" BorderBrush="#FFD700" BorderThickness="2"></Label>
+                    <Label Style="{StaticResource Texto}" Content="{Binding serie.Nombre}" FontWeight="DemiBold" Background="White" Width="450" Height="30" BorderBrush="#FFD700" BorderThickness="2"></Label>
 
                     <Image Source="\Assets\teatro.png" Height="30" Width="30" Margin="0,7,0,5"></Image>
-                    <Label  Style="{StaticResource Texto}" Content="{Binding serie.Genero}"  Background="White" Width="325" Height="30" BorderBrush="#FFD700" BorderThickness="2"></Label>
+                    <Label  Style="{StaticResource Texto}"  Content="{Binding serie.Genero}" FontWeight="DemiBold"  Background="White" Width="450" Height="30" BorderBrush="#FFD700" BorderThickness="2"></Label>
 
                     <Image Source="\Assets\pelicula.png" Height="30" Width="30" Margin="0,7,0,5"></Image>
-                    <Label  Style="{StaticResource Texto}" Content="{Binding serie.Episodios}"  Background="White" Width="325" Height="30" BorderBrush="#FFD700" BorderThickness="2"></Label>
+                    <Label  Style="{StaticResource Texto}" Content="{Binding serie.Episodios}" FontWeight="DemiBold" Background="White" Width="450" Height="30" BorderBrush="#FFD700" BorderThickness="2"></Label>
 
                     <Image Source="\Assets\writing.png" Height="30" Width="30"></Image>
-                    <TextBox IsReadOnly="True" Text="{Binding serie.Descripcion}" Background="White"  Width="250" Height="90" BorderBrush="#FFD700" BorderThickness="2" TextWrapping="Wrap"></TextBox>
+                    <TextBox IsReadOnly="True" Text="{Binding serie.Descripcion}" Background="White" FontWeight="DemiBold"  Width="450" Height="110" BorderBrush="#FFD700" BorderThickness="2" TextWrapping="Wrap"></TextBox>
 
                     <Image Source="\Assets\calendar.png" Height="30" Width="30" Margin="0,10,0,10"></Image>
-                    <Label  Style="{StaticResource Texto}" Content="{Binding serie.InicioDeEmision}"  Background="White" Width="325" Height="27" BorderBrush="#FFD700" BorderThickness="2"></Label>
+                    <Label  Style="{StaticResource Texto}" Content="{Binding serie.InicioDeEmision}" FontWeight="DemiBold" Background="White" Width="325" Height="27" BorderBrush="#FFD700" BorderThickness="2"></Label>
 
                     <Image Source="\Assets\calendar.png" Height="30" Width="30" Margin="0,10,0,5"></Image>
-                    <Label  Style="{StaticResource Texto}" Content="{Binding serie.FinDeEmision}"  Background="White" Width="325" Height="27" BorderBrush="#FFD700" BorderThickness="2"></Label>
+                    <Label  Style="{StaticResource Texto}" Content="{Binding serie.FinDeEmision}" FontWeight="DemiBold" Background="White" Width="325" Height="27" BorderBrush="#FFD700" BorderThickness="2"></Label>
 
 
 

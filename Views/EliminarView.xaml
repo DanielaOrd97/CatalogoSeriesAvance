@@ -15,10 +15,10 @@
 
                 <!--<TextBlock Foreground="#FFD700" FontWeight="Bold"
                            Margin="20,20,0,0" FontSize="30" >Título:</TextBlock>-->
-                <Image Margin="0,30,0,10" Height="200" Width="140" Source="{Binding serie.Imagen}" Stretch="UniformToFill"></Image>
+                <Image Margin="0,30,0,10" Height="200" Width="140" Source="{Binding serie.Imagen}" Stretch="Uniform"></Image>
                 <Label FontSize="20" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="0,5,0,0" Content="{Binding serie.Nombre}" Height="35" Background="White" Width="290"></Label>
                 
-                <TextBlock  FontWeight="Heavy" Margin="0,28,0,0" HorizontalAlignment="Center" TextWrapping="Wrap" Foreground="#FFD700" FontSize="20">¿Estas seguro de que deseas eliminar</TextBlock>
+                <TextBlock  FontWeight="Heavy" Margin="0,28,0,0" HorizontalAlignment="Center" TextWrapping="Wrap" Foreground="#FFD700" FontSize="20">¿Está seguro de que desea eliminar</TextBlock>
                 <TextBlock  FontWeight="Heavy" HorizontalAlignment="Center"  Foreground="#FFD700" FontSize="20">el elemento seleccionado?</TextBlock>
                
                 <WrapPanel HorizontalAlignment="Center" Margin="0,12,0,0">

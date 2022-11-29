@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CatalogoSeries.Views"
-        xmlns:vm ="clr-namespace:CatalogoSeries.ViewModels"
+        xmlns:vm="clr-namespace:CatalogoSeries.ViewModels"
         mc:Ignorable="d"
         Title="CatalogoView" WindowStartupLocation="CenterScreen" HorizontalAlignment="Center"  AllowsTransparency="True" Height="650" Width="1180" Background="#022C43" WindowStyle="None">
 
@@ -58,7 +58,7 @@
                 <Button Command="{Binding VerAgregarCommand}">
                     <Image Source="C:\Users\danie\Documents\CatalogoSeries\CatalogoSeries\Assets\add-file.png"></Image>
                 </Button>
-                <Button>
+                <Button Command="{Binding VerEditarCommand}">
                     <Image Source="\Assets\editar-texto.png"></Image>
                 </Button>
                 <Button Command="{Binding VerEliminarCommand}">
@@ -80,6 +80,7 @@
                     <local:AgregarView1 x:Key="agregar"></local:AgregarView1>
                     <local:VerDetalles x:Key="ver"></local:VerDetalles>
                     <local:EliminarView x:Key="eliminar"></local:EliminarView>
+                    <local:EditarView x:Key="editar"></local:EditarView>
                 </ContentControl.Resources>
 
                 <ContentControl.Style>
@@ -97,49 +98,15 @@
                             <DataTrigger Binding="{Binding Vista}" Value="eliminar">
                                 <Setter Property="Content" Value="{StaticResource eliminar}"></Setter>
                             </DataTrigger>
+                            <DataTrigger Binding="{Binding Vista}" Value="editar">
+                                <Setter Property="Content" Value="{StaticResource editar}"></Setter>
+                            </DataTrigger>
                         </Style.Triggers>
                     </Style>
                 </ContentControl.Style>
                 
             </ContentControl>
 
-
-
-
-            <!--<ListBox Background="Transparent" Height="545" Width="540" BorderThickness="0">
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <UniformGrid Columns="2"></UniformGrid>
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-
-                        <Border>
-                            <StackPanel>
-                                <Border Background="#053F5E" Margin="5" CornerRadius="10" Height="100" Width="150">
-
-                                    
-                                    <StackPanel>
-                                        <Image></Image>
-                                        <TextBlock></TextBlock>
-                                        <TextBlock></TextBlock>
-                                    </StackPanel>
-                                    
-                                    
-                                </Border>
-                            </StackPanel>
-                        </Border>
-                        
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-                
-            </ListBox>-->
-            
-            
-            
-            
         </Border>
         
         

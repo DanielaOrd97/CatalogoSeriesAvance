@@ -27,8 +27,11 @@ namespace CatalogoSeries.ViewModels
         public ICommand VerSerieCommand { get; set; }
         public ICommand VerAgregarCommand { get; set; }
         public ICommand VerEliminarCommand { get; set; }
+        public ICommand VerEditarCommand { get; set; }
         public ICommand AgregarSerieCommand { get; set; }
         public ICommand EliminarSerieCommand { get; set; }
+        public ICommand EditarSerieCommand { get; set; }
+
 
         public SeriesViewModel()
         {
@@ -36,15 +39,62 @@ namespace CatalogoSeries.ViewModels
             VerAgregarCommand = new RelayCommand(VerAgregar);
             AgregarSerieCommand = new RelayCommand(AgregarSerie);
             EliminarSerieCommand = new RelayCommand(EliminarSerie);
+            EditarSerieCommand = new RelayCommand(EditarSerie);
             CancelarCommand = new RelayCommand(Cancelar);
             RegresarCommand = new RelayCommand(Regresar);
             VerSerieCommand = new RelayCommand(VerSerie);
             VerEliminarCommand = new RelayCommand(VerEliminar);
+            VerEditarCommand = new RelayCommand(VerEditar);
+        }
+
+        private void EditarSerie()
+        {
+           if(serie != null)
+            {
+               if(catalogo.Validar(serie,out List<string> Errores))
+                {
+                    var existe = catalogo.GetSeries(serie);
+                    if(existe != null)
+                    {
+                        existe.Id = serie.Id;
+                        existe.Nombre = serie.Nombre;
+                        existe.Genero = serie.Genero;
+                        existe.Episodios = serie.Episodios;
+                        existe.Descripcion = serie.Descripcion;
+                        existe.InicioDeEmision = serie.InicioDeEmision;
+                        existe.FinDeEmision = serie.FinDeEmision;
+                        existe.Imagen = serie.Imagen;
+
+                        catalogo.Update(existe);
+
+                        Vista = "principal";
+                        Actualizar();
+                    }
+                }
+                else
+                {
+                    foreach (var item in Errores)
+                    {
+                        Error = $"{Error}{item}{Environment.NewLine}";
+                        Actualizar();
+                    }
+                }
+                Error = "";
+            }
+        }
+
+        private void VerEditar()
+        {
+            if(serie != null)
+            {
+                Vista = "editar";
+                Actualizar();
+            }
         }
 
         private void EliminarSerie()
         {
-           if(serie != null)
+            if (serie != null)
             {
                 catalogo.Delete(serie);
                 ActualizarBaseDatos();
@@ -55,7 +105,7 @@ namespace CatalogoSeries.ViewModels
 
         private void VerEliminar()
         {
-            if(serie != null)
+            if (serie != null)
             {
                 Vista = "eliminar";
                 Actualizar();
@@ -64,7 +114,7 @@ namespace CatalogoSeries.ViewModels
 
         private void VerSerie()
         {
-            if(serie != null)
+            if (serie != null)
             {
                 Vista = "ver";
                 Actualizar();
@@ -84,7 +134,7 @@ namespace CatalogoSeries.ViewModels
         {
             Vista = "principal";
             Actualizar();
-          //  serie = null;
+            //  serie = null;
         }
 
         private void Cancelar()
@@ -96,9 +146,9 @@ namespace CatalogoSeries.ViewModels
 
         private void AgregarSerie()
         {
-            if(serie != null)
+            if (serie != null)
             {
-                if(catalogo.Validar(serie, out List<string> errores))
+                if (catalogo.Validar(serie, out List<string> errores))
                 {
                     catalogo.Create(serie);
                     ActualizarBaseDatos();

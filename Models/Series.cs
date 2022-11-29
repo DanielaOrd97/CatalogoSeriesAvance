@@ -8,9 +8,9 @@ namespace CatalogoSeries.Models
         public int Id { get; set; }
         public string Nombre { get; set; } = null!;
         public string Genero { get; set; } = null!;
-        public int Episodios { get; set; } = 0;
+        public int Episodios { get; set; }
         public string Descripcion { get; set; } = null!;
-        public DateTime InicioDeEmision { get; set; } 
+        public DateTime InicioDeEmision { get; set; }
         public DateTime? FinDeEmision { get; set; }
         public string Imagen { get; set; } = null!;
     }

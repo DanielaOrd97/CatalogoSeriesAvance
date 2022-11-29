@@ -21,7 +21,7 @@
 
         <ImageBrush x:Key="DownArrow_Default"
                     ImageSource="C:\Users\danie\Documents\CatalogoSeries\CatalogoSeries\Assets\chevron-arrow-down_Default.png">
-           
+
         </ImageBrush>
 
 
@@ -46,7 +46,7 @@
 
                 </Trigger>
             </Style.Triggers>
-            
+
         </Style>
 
         <ControlTemplate x:Key="VerticalScrollBar"
@@ -65,7 +65,7 @@
                     CornerRadius="20"
                     Margin="10"
                     Background="#FFD700">
-                    
+
                 </Border>
 
 
@@ -75,7 +75,7 @@
                           Command="ScrollBar.LineUpCommand"
                           Background="{StaticResource UpArrow_Default}"
                           Style="{StaticResource ScrollBar_UpArrow}">
-                    
+
                 </RepeatButton>
 
                 <RepeatButton x:Name="rb_Down"
@@ -98,13 +98,13 @@
                             Margin="3,2,3,2"
                             Command="ScrollBar.PageUpCommand"
                             Style="{StaticResource ScrollBar_Track}">
-                            
+
                         </RepeatButton>
                     </Track.DecreaseRepeatButton>
 
                     <Track.Thumb>
                         <Thumb Style="{StaticResource ScrollBar_Thumb}">
-                            
+
                         </Thumb>
                     </Track.Thumb>
 
@@ -113,12 +113,12 @@
                             Margin="3,2,3,2"
                             Command="ScrollBar.PageDownCommand"
                             Style="{StaticResource ScrollBar_Track}">
-                            
+
                         </RepeatButton>
                     </Track.IncreaseRepeatButton>
-                    
+
                 </Track>
-                
+
 
             </Grid>
 
@@ -136,9 +136,9 @@
                     <Setter TargetName="rb_Down" Property="IsEnabled" Value="False"></Setter>
                 </DataTrigger>
             </ControlTemplate.Triggers>
-            
+
         </ControlTemplate>
-        
+
     </UserControl.Resources>
 
 

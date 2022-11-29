@@ -38,7 +38,7 @@ namespace CatalogoSeries.Models
 
                 entity.Property(e => e.Descripcion).HasColumnType("text");
 
-                entity.Property(e => e.Genero).HasMaxLength(150);
+                entity.Property(e => e.Genero).HasMaxLength(80);
 
                 entity.Property(e => e.Imagen).HasColumnType("mediumtext");
 

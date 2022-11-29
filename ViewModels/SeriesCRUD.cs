@@ -23,11 +23,11 @@ namespace CatalogoSeries.ViewModels
             contenedor.SaveChanges();
         }
 
-        public bool Validar (Series s, out List<string> Errores)
+        public bool Validar(Series s, out List<string> Errores)
         {
             Errores = new();
 
-            if(s != null)
+            if (s != null)
             {
                 if (string.IsNullOrWhiteSpace(s.Nombre))
                 {
@@ -37,7 +37,7 @@ namespace CatalogoSeries.ViewModels
                 {
                     Errores.Add("Escriba el género de la serie.");
                 }
-                if(s.Episodios == 0)
+                if (s.Episodios == 0)
                 {
                     Errores.Add("Indique el total de episodios.");
                 }
@@ -45,8 +45,8 @@ namespace CatalogoSeries.ViewModels
                 {
                     Errores.Add("Coloque la sinopsis.");
                 }
-                
-                if(s.FinDeEmision <= s.InicioDeEmision)
+
+                if (s.FinDeEmision <= s.InicioDeEmision)
                 {
                     Errores.Add("Escriba el fin de eimisión correctamente.");
                 }
@@ -54,7 +54,7 @@ namespace CatalogoSeries.ViewModels
                 {
                     Errores.Add("Escriba la URL correspondiente.");
                 }
-                if(s.Imagen!= null && !Uri.TryCreate(s.Imagen,UriKind.Absolute, out var uri))
+                if (s.Imagen != null && !Uri.TryCreate(s.Imagen, UriKind.Absolute, out var uri))
                 {
                     Errores.Add("Escribe una URL válida.");
                 }
@@ -64,7 +64,27 @@ namespace CatalogoSeries.ViewModels
             return Errores.Count == 0;
         }
 
-        public void Delete (Series s)
+        public Series GetSeries(Series s)
+        {
+            Series? existe = contenedor.Series.Find(s.Id);
+
+            if(existe != null)
+            {
+                return existe;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public void Update(Series s)
+        {
+            contenedor.Series.Update(s);
+            contenedor.SaveChanges();
+        }
+
+        public void Delete(Series s)
         {
             contenedor.Series.Remove(s);
             contenedor.SaveChanges();

@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="570" d:DesignWidth="900">
 
-    <Border Background="#17B794" CornerRadius="30">
+   <Border  Background="#17B794" CornerRadius="30">
 
         <Border Background="#053F5E" Height="520" Width="800" CornerRadius="30">
 

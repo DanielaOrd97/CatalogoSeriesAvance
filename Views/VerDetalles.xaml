@@ -16,7 +16,13 @@
         </Grid.ColumnDefinitions>
 
         <Border Background="#17B794" CornerRadius="30,0,0,30">
-            <Image VerticalAlignment="Center" Stretch="Uniform" Source="{Binding serie.Imagen}" Height="400" Width="200" Margin="10"></Image>
+
+            <DockPanel>
+                <Button BorderThickness="0" Command="{Binding RegresarCommand}" Margin="20,5,0,0" HorizontalAlignment="Left" DockPanel.Dock="Top" Height="30" Width="30" Background="Transparent">
+                    <Image Source="\Assets\left.png"></Image>
+                </Button>
+                <Image VerticalAlignment="Center" Stretch="Uniform" Source="{Binding serie.Imagen}" Height="400" Width="200" Margin="10"></Image>
+            </DockPanel>
         </Border>
 
 

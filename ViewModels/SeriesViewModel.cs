@@ -36,6 +36,7 @@ namespace CatalogoSeries.ViewModels
         public ICommand EditarSerieCommand { get; set; }
         public ICommand GetSeriesXGeneroCommand { get; set; }
         public ICommand GetSeriesXNumEpisodios { get; set; }
+        public ICommand VerPrincipalOrdenada { get; set; }
 
 
         public int TotalElementos
@@ -55,11 +56,18 @@ namespace CatalogoSeries.ViewModels
             VerSerieCommand = new RelayCommand(VerSerie);
             VerEliminarCommand = new RelayCommand(VerEliminar);
             VerEditarCommand = new RelayCommand(VerEditar);
+            VerPrincipalOrdenada = new RelayCommand(VerVistaPrincipalOrdenada);
 
             GetSeriesXGeneroCommand = new RelayCommand<string>(GetSeriesPorGenero);
         }
 
-       
+        private void VerVistaPrincipalOrdenada()
+        {
+            ActualizarBaseDatos();
+            Vista = "principal";
+            Actualizar();
+        }
+
         private void GetSeriesPorGenero(string s)
         {
             ListaSeries.Clear();
@@ -68,7 +76,7 @@ namespace CatalogoSeries.ViewModels
             {
                 ListaSeries.Add(i);
             }
-
+            Vista = "principal";
             Actualizar();
         }
 
@@ -171,7 +179,7 @@ namespace CatalogoSeries.ViewModels
             if(Vista == "principal")
             {
                 serie = new();
-                serie.InicioDeEmision = DateTime.Now;
+                serie.InicioDeEmision = DateTime.Now.Date;
                 serie.Episodios = 0;
                 Vista = "agregar";
                 Actualizar();
@@ -180,11 +188,14 @@ namespace CatalogoSeries.ViewModels
 
         private void Regresar()
         {
-            ActualizarBaseDatos();
+           // ActualizarBaseDatos();
             Vista = "principal";
             Actualizar();
             //  serie = null;
         }
+
+
+
 
         private void Cancelar()
         {

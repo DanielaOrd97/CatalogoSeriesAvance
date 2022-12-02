@@ -15,9 +15,14 @@
         </Grid.ColumnDefinitions>
 
         <Border Background="#17B794" CornerRadius="30,0,0,30">
-          
+
+            <DockPanel>
+                <Button BorderThickness="0" Command="{Binding RegresarCommand}" Margin="20,5,0,0" HorizontalAlignment="Left" DockPanel.Dock="Top" Height="30" Width="30" Background="Transparent">
+                    <Image Source="\Assets\left.png"></Image>
+                </Button>
                 <TextBlock FontWeight="DemiBold"  FontSize="15" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Error}" TextWrapping="Wrap"></TextBlock>
-          
+            </DockPanel>
+
         </Border>
 
         <Border Background="#FFD700" Grid.Column="1" CornerRadius="0,30,30,0">

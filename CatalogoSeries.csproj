@@ -20,6 +20,7 @@
     <None Remove="Assets\folded-ribbon.png" />
     <None Remove="Assets\gallery.png" />
     <None Remove="Assets\informacion.png" />
+    <None Remove="Assets\left.png" />
     <None Remove="Assets\on-off-button.png" />
     <None Remove="Assets\pelicula.png" />
     <None Remove="Assets\right-arrow %282%29.png" />
@@ -76,6 +77,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\informacion.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\left.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\on-off-button.png">

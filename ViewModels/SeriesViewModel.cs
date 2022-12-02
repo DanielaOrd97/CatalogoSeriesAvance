@@ -22,7 +22,7 @@ namespace CatalogoSeries.ViewModels
         public ObservableCollection<Series> ListaSeries { get; set; } = new ObservableCollection<Series>();
 
         public SeriesCRUD? catalogo = new();
-        public Series serie { get; set; }
+        public Series? serie { get; set; }
         public string Error { get; set; } = "";
         public string Vista { get; set; } = "principal";
         public ICommand CancelarCommand { get; set; }
@@ -93,6 +93,7 @@ namespace CatalogoSeries.ViewModels
 
                         catalogo.Update(existe);
 
+                        ActualizarBaseDatos();
                         Vista = "principal";
                         Actualizar();
                     }
@@ -109,11 +110,29 @@ namespace CatalogoSeries.ViewModels
             }
         }
 
+
+        int indice = 0;
         private void VerEditar()
         {
             if(serie != null && Vista == "principal")
             {
                 Vista = "editar";
+
+                Series clon = new()
+                {
+                    Id = serie.Id,
+                    Nombre = serie.Nombre,
+                    Genero = serie.Genero,
+                    Episodios = serie.Episodios,
+                    Descripcion = serie.Descripcion,
+                    InicioDeEmision = serie.InicioDeEmision,
+                    FinDeEmision = serie.FinDeEmision,
+                    Imagen = serie.Imagen,
+                };
+
+                indice = ListaSeries.IndexOf(serie);
+                serie = clon;
+
                 Actualizar();
             }
         }

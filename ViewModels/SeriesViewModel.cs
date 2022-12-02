@@ -5,9 +5,11 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics.Contracts;
+using System.Globalization;
 using System.IO.Packaging;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
 using System.Windows.Input;
@@ -55,22 +57,9 @@ namespace CatalogoSeries.ViewModels
             VerEditarCommand = new RelayCommand(VerEditar);
 
             GetSeriesXGeneroCommand = new RelayCommand<string>(GetSeriesPorGenero);
-            GetSeriesXNumEpisodios = new RelayCommand<int>(GetSeriesPorEpisodios);
-
         }
 
-        private void GetSeriesPorEpisodios(int n)
-        {
-            ListaSeries.Clear();
-
-            foreach (var item in catalogo.GetSeriesXNumEpisodios(n))
-            {
-                ListaSeries.Add(item);
-            }
-
-            Actualizar();
-        }
-
+       
         private void GetSeriesPorGenero(string s)
         {
             ListaSeries.Clear();
@@ -85,6 +74,7 @@ namespace CatalogoSeries.ViewModels
 
         private void EditarSerie()
         {
+
            if(serie != null)
             {
                if(catalogo.Validar(serie,out List<string> Errores))
@@ -121,7 +111,7 @@ namespace CatalogoSeries.ViewModels
 
         private void VerEditar()
         {
-            if(serie != null)
+            if(serie != null && Vista == "principal")
             {
                 Vista = "editar";
                 Actualizar();
@@ -141,7 +131,7 @@ namespace CatalogoSeries.ViewModels
 
         private void VerEliminar()
         {
-            if (serie != null)
+            if (serie != null && Vista == "principal")
             {
                 Vista = "eliminar";
                 Actualizar();
@@ -150,7 +140,7 @@ namespace CatalogoSeries.ViewModels
 
         private void VerSerie()
         {
-            if (serie != null)
+            if (serie != null && Vista == "principal")
             {
                 Vista = "ver";
                 Actualizar();
@@ -159,11 +149,14 @@ namespace CatalogoSeries.ViewModels
 
         private void VerAgregar()
         {
-            serie = new();
-            serie.InicioDeEmision = DateTime.Now;
-            serie.Episodios = 0;
-            Vista = "agregar";
-            Actualizar();
+            if(Vista == "principal")
+            {
+                serie = new();
+                serie.InicioDeEmision = DateTime.Now;
+                serie.Episodios = 0;
+                Vista = "agregar";
+                Actualizar();
+            }
         }
 
         private void Regresar()
@@ -187,6 +180,7 @@ namespace CatalogoSeries.ViewModels
             {
                 if (catalogo.Validar(serie, out List<string> errores))
                 {
+
                     catalogo.Create(serie);
                     ActualizarBaseDatos();
                     Vista = "principal";
@@ -201,8 +195,7 @@ namespace CatalogoSeries.ViewModels
                     Actualizar();
                 }
 
-
-                Error = "";
+                Error = ""; 
             }
         }
 

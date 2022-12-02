@@ -1,8 +1,10 @@
 ﻿using CatalogoSeries.Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace CatalogoSeries.ViewModels
@@ -14,24 +16,24 @@ namespace CatalogoSeries.ViewModels
 
         public IEnumerable<Series> GetSeries()
         {
-            return contenedor.Series.OrderBy(x => x.Nombre);
+             return contenedor.Series.OrderBy(x => x.Nombre);
         }
 
 
         public IEnumerable<Series> GetSeriesXGenero(string palabra)
         {
+
+            palabra = string.Concat(Regex.Replace(palabra, @"(?i)[\p{L}-[ña-z]]+", m => m.Value.Normalize(NormalizationForm.FormD))
+                .Where(c => CharUnicodeInfo.GetUnicodeCategory(c) != UnicodeCategory.NonSpacingMark));
+          
             return contenedor.Series.Where(x => x.Genero.Contains(palabra.ToUpper()));
-        }
-
-        public IEnumerable<Series> GetSeriesXNumEpisodios(int numero)
-        {
-
-            return contenedor.Series.Where(x => x.Episodios == numero);
-            
         }
 
         public void Create(Series s)
         {
+            s.Genero = string.Concat(Regex.Replace(s.Genero, @"(?i)[\p{L}-[ña-z]]+", m => m.Value.Normalize(NormalizationForm.FormD))
+              .Where(c => CharUnicodeInfo.GetUnicodeCategory(c) != UnicodeCategory.NonSpacingMark));
+
             contenedor.Series.Add(s);
             contenedor.SaveChanges();
         }
@@ -50,7 +52,7 @@ namespace CatalogoSeries.ViewModels
                 {
                     Errores.Add("Escriba el género de la serie.");
                 }
-                if (s.Episodios == 0)
+                if (s.Episodios == 0 )
                 {
                     Errores.Add("Indique el total de episodios.");
                 }
@@ -95,6 +97,9 @@ namespace CatalogoSeries.ViewModels
 
         public void Update(Series s)
         {
+            s.Genero = string.Concat(Regex.Replace(s.Genero, @"(?i)[\p{L}-[ña-z]]+", m => m.Value.Normalize(NormalizationForm.FormD))
+              .Where(c => CharUnicodeInfo.GetUnicodeCategory(c) != UnicodeCategory.NonSpacingMark));
+
             contenedor.Series.Update(s);
             contenedor.SaveChanges();
         }

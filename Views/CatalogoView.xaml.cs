@@ -22,6 +22,7 @@ namespace CatalogoSeries.Views
         public CatalogoView()
         {
             InitializeComponent();
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -35,6 +36,15 @@ namespace CatalogoSeries.Views
             {
                 this.DragMove();
             }
+        }
+
+        private void Entrada_KeyDown(object sender, KeyEventArgs e)
+        {
+            //if (Char.IsDigit((char)e.Key))
+            //{
+            //    e.Handled = false;
+            //}
+
         }
     }
 }

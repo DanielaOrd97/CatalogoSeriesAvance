@@ -99,7 +99,7 @@
                                                    VerticalAlignment="Center"
                                                    Foreground="White"
                                                    FontWeight="Bold"
-                                                   FontSize="15">Agregar</TextBlock>
+                                                   FontSize="15">Editar</TextBlock>
                                     </Border>
                                 </ControlTemplate>
                             </Button.Template>

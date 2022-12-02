@@ -47,8 +47,10 @@
                 </StackPanel.Resources>
 
 
-                <Button Command="{Binding RegresarCommand}">
+                <Button x:Name="botoninicio" Command="{Binding RegresarCommand}">
                     <Image Source="https://cdn-icons-png.flaticon.com/128/3801/3801427.png"></Image>
+
+                    
                     
                 </Button>
 
@@ -76,16 +78,27 @@
         <DockPanel Grid.Column="1">
 
 
-            <WrapPanel DockPanel.Dock="Top" HorizontalAlignment="Center" Margin="200,10,0,0">
+            <WrapPanel DockPanel.Dock="Top" HorizontalAlignment="Center" Margin="70,10,0,0">
+
+
+                <TextBlock x:Name="aviso" Margin="0,0,15,0" Foreground="White" FontSize="25" FontWeight="Bold" VerticalAlignment="Center">Por género:
+
+                    
+                   
+                </TextBlock>
 
                 
-                <TextBox x:Name="Entrada" Width="300" Height="33" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" Margin="0,0,10,0"></TextBox>
-                <Button Command="{Binding GetSeriesXGeneroCommand}" CommandParameter="{Binding ElementName=Entrada, Path=Text}" Height="50" Width="50" Background="Transparent" BorderThickness="0">
+                <TextBox KeyDown="Entrada_KeyDown" x:Name="Entrada"  CharacterCasing="Upper" Width="500" Height="33" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="20" FontWeight="DemiBold" Margin="0,0,20,0">
+
+                    
+                    
+                </TextBox>
+                <Button Command="{Binding GetSeriesXGeneroCommand}" CommandParameter="{Binding ElementName=Entrada, Path=Text}" Height="50" Width="50" Background="Transparent" BorderThickness="0" Margin="5,0,0,0">
                     <Image Source="https://cdn-icons-png.flaticon.com/128/6539/6539033.png"></Image>                
                 </Button>
 
 
-                <TextBlock Margin="80,0,0,0" Foreground="White" FontWeight="Bold" FontSize="30" VerticalAlignment="Center">Series:
+                <TextBlock Margin="50,0,0,0" Foreground="White" FontWeight="Bold" FontSize="30" VerticalAlignment="Center">Series:
                 <TextBlock Text="{Binding TotalElementos}" Margin="0,0,0,0" VerticalAlignment="Center" Foreground="White"
                            FontWeight="Bold" FontSize="30">
                     
